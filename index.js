@@ -204,10 +204,10 @@ async function run() {
 		})
 
 		// get all tags
-		// app.get("/tags", async (req, res) => {
-		// 	const result = await tagsCollection.find().toArray()
-		// 	res.send(result)
-		// })
+		app.get("/tags", async (req, res) => {
+			const result = await tagsCollection.find().toArray()
+			res.send(result)
+		})
 
 		// add announcement by admin
 		app.post("/addAnnouncement", async (req, res) => {
@@ -230,19 +230,19 @@ async function run() {
 		})
 
 		// get all posts
-		app.get("/posts", async (req, res) => {
-			const tags = req.query.tags
-			const page = parseInt(req.query.page)
-			const size = parseInt(req.query.size)
-			let query = {}
-			if (tags && tags !== "null") query = { tags }
-			const result = await postsCollection
-				.find(query)
-				.skip(page * size)
-				.limit(size)
-				.toArray()
-			res.send(result)
-		})
+		// app.get("/posts", async (req, res) => {
+		// 	const tags = req.query.tags
+		// 	const page = parseInt(req.query.page)
+		// 	const size = parseInt(req.query.size)
+		// 	let query = {}
+		// 	if (tags && tags !== "null") query = { tags }
+		// 	const result = await postsCollection
+		// 		.find(query)
+		// 		.skip(page * size)
+		// 		.limit(size)
+		// 		.toArray()
+		// 	res.send(result)
+		// })
 
 		// get the users count
 		app.get("/usersCount", async (req, res) => {
