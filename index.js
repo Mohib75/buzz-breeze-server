@@ -359,19 +359,19 @@ async function run() {
 			res.send(result)
 		})
 
-		// update Room Status
-		// app.patch("/post/:id", async (req, res) => {
-		// 	const id = req.params.id
-		// 	const upvote = req.body.upvote
-		// 	const downvote = req.body.downvote
-		// 	// change room availability status
-		// 	const query = { _id: new ObjectId(id) }
-		// 	const updateDoc = {
-		// 		$set: { upvote: upvote, downvote: downvote },
-		// 	}
-		// 	const result = await postsCollection.updateOne(query, updateDoc)
-		// 	res.send(result)
-		// })
+		// update post
+		app.patch("/post/:id", async (req, res) => {
+			const id = req.params.id
+			const upvote = req.body.upvote
+			const downvote = req.body.downvote
+			// change room availability status
+			const query = { _id: new ObjectId(id) }
+			const updateDoc = {
+				$set: { upvote: upvote, downvote: downvote },
+			}
+			const result = await postsCollection.updateOne(query, updateDoc)
+			res.send(result)
+		})
 
 		// Send a ping to confirm a successful connection
 		// await client.db("admin").command({ ping: 1 })
