@@ -330,12 +330,12 @@ async function run() {
 			res.send(result)
 		})
 
-		// // add comment by user
-		// app.post("/addComment", async (req, res) => {
-		// 	const commentData = req.body
-		// 	const result = await commentsCollection.insertOne(commentData)
-		// 	res.send(result)
-		// })
+		// add comment by user
+		app.post("/addComment", async (req, res) => {
+			const commentData = req.body
+			const result = await commentsCollection.insertOne(commentData)
+			res.send(result)
+		})
 
 		// add report by user
 		app.post("/addReport", async (req, res) => {
@@ -351,13 +351,13 @@ async function run() {
 		})
 
 		// Get comment bu title
-		app.get("/comment/:title", async (req, res) => {
-			const title = req.params.title
-			console.log(title)
-			let query = { title: title }
-			const result = await commentsCollection.find(query).toArray()
-			res.send(result)
-		})
+		// app.get("/comment/:title", async (req, res) => {
+		// 	const title = req.params.title
+		// 	console.log(title)
+		// 	let query = { title: title }
+		// 	const result = await commentsCollection.find(query).toArray()
+		// 	res.send(result)
+		// })
 
 		// update Room Status
 		app.patch("/post/:id", async (req, res) => {
