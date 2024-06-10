@@ -301,18 +301,18 @@ async function run() {
 		})
 
 		// get comments by title
-		// app.get("/myCommentCount/:title", async (req, res) => {
-		// 	const title = req.params.title
+		app.get("/myCommentCount/:title", async (req, res) => {
+			const title = req.params.title
 
-		// 	try {
-		// 		const query = { title: title }
-		// 		const count = await commentsCollection.countDocuments(query)
-		// 		res.send({ count })
-		// 	} catch (error) {
-		// 		console.error("Error counting documents:", error)
-		// 		res.status(500).send({ error: "Failed to count posts" })
-		// 	}
-		// })
+			try {
+				const query = { title: title }
+				const count = await commentsCollection.countDocuments(query)
+				res.send({ count })
+			} catch (error) {
+				console.error("Error counting documents:", error)
+				res.status(500).send({ error: "Failed to count posts" })
+			}
+		})
 
 		// delete a post
 		app.delete("/post/:id", async (req, res) => {
@@ -330,12 +330,12 @@ async function run() {
 			res.send(result)
 		})
 
-		// add comment by user
-		app.post("/addComment", async (req, res) => {
-			const commentData = req.body
-			const result = await commentsCollection.insertOne(commentData)
-			res.send(result)
-		})
+		// // add comment by user
+		// app.post("/addComment", async (req, res) => {
+		// 	const commentData = req.body
+		// 	const result = await commentsCollection.insertOne(commentData)
+		// 	res.send(result)
+		// })
 
 		// add report by user
 		app.post("/addReport", async (req, res) => {
