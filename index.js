@@ -281,18 +281,18 @@ async function run() {
 		})
 
 		// get all posts for user
-		// app.get("/myPostsCount/:email", async (req, res) => {
-		// 	const email = req.params.email
+		app.get("/myPostsCount/:email", async (req, res) => {
+			const email = req.params.email
 
-		// 	try {
-		// 		const query = { email: email }
-		// 		const count = await postsCollection.countDocuments(query)
-		// 		res.send({ count })
-		// 	} catch (error) {
-		// 		console.error("Error counting documents:", error)
-		// 		res.status(500).send({ error: "Failed to count posts" })
-		// 	}
-		// })
+			try {
+				const query = { email: email }
+				const count = await postsCollection.countDocuments(query)
+				res.send({ count })
+			} catch (error) {
+				console.error("Error counting documents:", error)
+				res.status(500).send({ error: "Failed to count posts" })
+			}
+		})
 
 		// get the comment count
 		app.get("/commentsCount", async (req, res) => {
@@ -301,18 +301,18 @@ async function run() {
 		})
 
 		// get comments by title
-		app.get("/myCommentCount/:title", async (req, res) => {
-			const title = req.params.title
+		// app.get("/myCommentCount/:title", async (req, res) => {
+		// 	const title = req.params.title
 
-			try {
-				const query = { title: title }
-				const count = await commentsCollection.countDocuments(query)
-				res.send({ count })
-			} catch (error) {
-				console.error("Error counting documents:", error)
-				res.status(500).send({ error: "Failed to count posts" })
-			}
-		})
+		// 	try {
+		// 		const query = { title: title }
+		// 		const count = await commentsCollection.countDocuments(query)
+		// 		res.send({ count })
+		// 	} catch (error) {
+		// 		console.error("Error counting documents:", error)
+		// 		res.status(500).send({ error: "Failed to count posts" })
+		// 	}
+		// })
 
 		// delete a post
 		app.delete("/post/:id", async (req, res) => {
