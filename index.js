@@ -230,19 +230,19 @@ async function run() {
 		})
 
 		// get all posts
-		// app.get("/posts", async (req, res) => {
-		// 	const tags = req.query.tags
-		// 	const page = parseInt(req.query.page)
-		// 	const size = parseInt(req.query.size)
-		// 	let query = {}
-		// 	if (tags && tags !== "null") query = { tags }
-		// 	const result = await postsCollection
-		// 		.find(query)
-		// 		.skip(page * size)
-		// 		.limit(size)
-		// 		.toArray()
-		// 	res.send(result)
-		// })
+		app.get("/posts", async (req, res) => {
+			const tags = req.query.tags
+			const page = parseInt(req.query.page)
+			const size = parseInt(req.query.size)
+			let query = {}
+			if (tags && tags !== "null") query = { tags }
+			const result = await postsCollection
+				.find(query)
+				.skip(page * size)
+				.limit(size)
+				.toArray()
+			res.send(result)
+		})
 
 		// get the users count
 		app.get("/usersCount", async (req, res) => {
@@ -265,20 +265,20 @@ async function run() {
 		})
 
 		// get all posts for user
-		app.get("/myPosts/:email", async (req, res) => {
-			const email = req.params.email
-			const page = parseInt(req.query.page)
-			const size = parseInt(req.query.size)
+		// app.get("/myPosts/:email", async (req, res) => {
+		// 	const email = req.params.email
+		// 	const page = parseInt(req.query.page)
+		// 	const size = parseInt(req.query.size)
 
-			let query = { email: email }
-			const result = await postsCollection
-				.find(query)
-				.skip(page * size)
-				.limit(size)
-				.toArray()
+		// 	let query = { email: email }
+		// 	const result = await postsCollection
+		// 		.find(query)
+		// 		.skip(page * size)
+		// 		.limit(size)
+		// 		.toArray()
 
-			res.send(result)
-		})
+		// 	res.send(result)
+		// })
 
 		// get all posts for user
 		app.get("/myPostsCount/:email", async (req, res) => {
